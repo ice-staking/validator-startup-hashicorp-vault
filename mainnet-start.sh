@@ -29,7 +29,7 @@ TMP_IDENTITY_FILE=$(mktemp /dev/shm/id.json.XXXXXX)
 
 # Fetch the secret using curl and store it in the temporary file
 curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
-  $HASHICORP_URL \
+  "$HASHICORP_URL" \
     | jq -r '.data.data.PRIVATE_KEY | @json' > "$TMP_IDENTITY_FILE"
 
 # Verify if the temporary file is not empty
